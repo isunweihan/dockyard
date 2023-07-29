@@ -7,8 +7,8 @@ services:
       - "53:53/udp"
       - "3000:3000/tcp"
     volumes:
-      - /volume1/docker/adguardhome/work:/opt/adguardhome/work
-      - /volume1/docker/adguardhome/conf:/opt/adguardhome/conf
+      - /volume1/docker/adguardhome/adguardhome/work:/opt/adguardhome/work
+      - /volume1/docker/adguardhome/adguardhome/conf:/opt/adguardhome/conf
     network_mode: bridge
     links:
       - smartdns
@@ -17,6 +17,6 @@ services:
     image: ghostry/smartdns
     container_name: adguardhome_smartdns
     volumes:
-      - /volume1/docker/smartdns:/smartdns
+      - /volume1/docker/adguardhome/smartdns:/smartdns
     network_mode: bridge
     restart: unless-stopped
