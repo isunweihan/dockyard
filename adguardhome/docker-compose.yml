@@ -12,11 +12,11 @@ services:
     network_mode: bridge
     links:
       - smartdns
-    restart: unless-stopped
+    restart: always
   smartdns:
     image: ghostry/smartdns
     container_name: adguardhome_smartdns
     volumes:
       - /volume1/docker/adguardhome/smartdns:/smartdns
     network_mode: bridge
-    restart: unless-stopped
+    restart: always
