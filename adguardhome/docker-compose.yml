@@ -1,4 +1,7 @@
 # Set 'Upstream DNS servers' as 'udp://smartdns'
+# DNS blocklists:
+#   - https://anti-ad.net/easylist.txt
+#   - https://raw.hellogithub.com/hosts
 version: "3"
 services:
   adguardhome:
