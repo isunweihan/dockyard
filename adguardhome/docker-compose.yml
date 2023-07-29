@@ -1,3 +1,4 @@
+# Set 'Upstream DNS servers' as 'udp://smartdns'
 version: "3"
 services:
   adguardhome:
