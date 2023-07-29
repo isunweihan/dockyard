@@ -1,0 +1,22 @@
+version: "3"
+services:
+  adguardhome:
+    image: adguard/adguardhome
+    container_name: adguardhome
+    ports:
+      - "53:53/udp"
+      - "3000:3000/tcp"
+    volumes:
+      - /volume1/docker/adguardhome/work:/opt/adguardhome/work
+      - /volume1/docker/adguardhome/conf:/opt/adguardhome/conf
+    network_mode: bridge
+    links:
+      - smartdns
+    restart: unless-stopped
+  smartdns:
+    image: ghostry/smartdns
+    container_name: adguardhome_smartdns
+    volumes:
+      - /volume1/docker/smartdns:/smartdns
+    network_mode: bridge
+    restart: unless-stopped
