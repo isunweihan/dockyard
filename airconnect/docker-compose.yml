@@ -1,0 +1,7 @@
+version: "3"
+services:
+  airconnect:
+    image: 1activegeek/airconnect
+    container_name: airconnect
+    network_mode: host
+    restart: always
