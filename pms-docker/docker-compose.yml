@@ -1,0 +1,15 @@
+version: '3'
+services:
+  pms-docker:
+    container_name: pms-docker
+    image: plexinc/pms-docker
+    restart: unless-stopped
+    network_mode: host
+    environment:
+      - TZ=Asia/Shanghai
+      - PLEX_CLAIM=${PLEX_CLAIM}
+      - ADVERTISE_IP=${ADVERTISE_IP}
+    volumes:
+      - /volume1/docker/pms-docker/pms-docker/config:/config
+      - /volume1/docker/pms-docker/pms-docker/transcode:/transcode
+      - /volume3/media:/media # media folder

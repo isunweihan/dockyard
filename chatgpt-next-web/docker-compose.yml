@@ -1,0 +1,14 @@
+# https://github.com/Yidadaa/ChatGPT-Next-Web/blob/main/README_CN.md
+version: "3"
+services:
+  chatgpt-next-web:
+    container_name: chatgpt-next-web
+    image: yidadaa/chatgpt-next-web
+    network_mode: bridge
+    environment:
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+      CODE: ${CODE}
+      BASE_URL: ${BASE_URL}
+    ports:
+      - "16286:3000"
+    restart: unless-stopped

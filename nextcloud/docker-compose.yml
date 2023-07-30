@@ -1,0 +1,45 @@
+version: '2'
+
+services:
+  mariadb:
+    container_name: nextcloud_mariadb
+    image: mariadb:10.5
+    restart: unless-stopped
+    command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
+    networks:
+      - database_only
+    volumes:
+      - /volume1/docker/nextcloud/mariadb:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_PASSWORD=nextcloud
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+
+  nextcloud:
+    container_name: nextcloud
+    image: nextcloud
+    restart: unless-stopped
+    ports:
+      - 11000:80
+    networks:
+      - bridge
+      - database_only
+    links:
+      - mariadb
+    volumes:
+      - /volume1/docker/nextcloud/nextcloud:/var/www/html
+      # storage folder
+    environment:
+      - MYSQL_PASSWORD=nextcloud
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER=nextcloud
+      - MYSQL_HOST=mariadb
+    depends_on:
+      - mariadb
+
+networks:
+  bridge:
+    external: true
+  database_only:
+    internal: true

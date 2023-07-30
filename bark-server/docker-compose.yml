@@ -1,0 +1,10 @@
+version: "3"
+services:
+  bark-server:
+    image: finab/bark-server
+    container_name: bark-server
+    ports:
+      - "8967:8080"
+    volumes:
+      - /volume1/docker/bark-server/bark-server:/data
+    restart: unless-stopped

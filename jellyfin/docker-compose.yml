@@ -1,0 +1,14 @@
+# https://jellyfin.org/docs/general/installation/container/
+version: "3"
+services:
+  jellyfin:
+    container_name: jellyfin
+    image: jellyfin/jellyfin
+    network_mode: bridge
+    ports:
+      - "8096:8096"
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/jellyfin/jellyfin/config:/config
+      - /volume1/docker/jellyfin/jellyfin/cache:/cache
+      # media folders

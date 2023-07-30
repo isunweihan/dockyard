@@ -4,4 +4,4 @@ services:
     image: 1activegeek/airconnect
     container_name: airconnect
     network_mode: host
-    restart: always
+    restart: unless-stopped

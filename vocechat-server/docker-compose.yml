@@ -1,0 +1,11 @@
+version: "3.9"
+services:
+  vocechat-server:
+    container_name: vocechat-server
+    image: privoce/vocechat-server:latest
+    network_mode: bridge
+    ports:
+      - "3009:3000"
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/vocechat-server/vocechat-server:/home/vocechat-server/data

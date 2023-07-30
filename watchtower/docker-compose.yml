@@ -1,0 +1,12 @@
+version: "3"
+services:
+  watchtower:
+    container_name: watchtower
+    image: containrrr/watchtower
+    network_mode: bridge
+    environment: 
+      - TZ=Asia/Shanghai
+    command: --cleanup
+    restart: unless-stopped
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock

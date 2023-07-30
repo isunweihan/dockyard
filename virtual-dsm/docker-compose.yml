@@ -1,0 +1,18 @@
+version: "3"
+services:
+  virtual-dsm:
+    container_name: virtual-dsm
+    image: kroese/virtual-dsm:latest
+    environment:
+      DISK_SIZE: "16G"
+    devices:
+      - /dev/kvm
+    cap_add:
+      - NET_ADMIN
+    ports:
+      - 6001:5000
+    volumes:
+      - /volume1/docker/virtual-dsm/virtual-dsm:/storage
+    network_mode: bridge
+    restart: unless-stopped
+    stop_grace_period: 1m

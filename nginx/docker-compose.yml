@@ -1,0 +1,12 @@
+version: "3"
+services:
+  nginx:
+    container_name: nginx
+    image: nginx
+    network_mode: bridge
+    ports:
+      - "37443:443"
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/nginx/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - /volume1/docker/nginx/nginx/conf.d:/etc/nginx/conf.d

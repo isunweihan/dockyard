@@ -1,0 +1,12 @@
+# https://fastly.jsdelivr.net/gh/qd-today/qd@master/docker-compose.yml
+version: "3"
+services:
+  qiandao:
+    container_name: qiandao
+    image: qdtoday/qd
+    network_mode: bridge
+    ports:
+      - "8923:80"
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/qiandao/qiandao:/usr/src/app/config

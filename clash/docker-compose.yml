@@ -1,0 +1,30 @@
+# 不支持自动更新订阅，需要定时执行脚本更新，UNRAID使用插件User Scripts，群晖DSM使用计划任务，参考脚本内容：
+# #!/bin/bash
+# cp /volume1/docker/clash/config/config.yaml /volume1/docker/clash/config/backup/config-`date "+%Y%m%d-%H%M%S"`.yaml
+# # 下载节点配置文件，根据实际的订阅地址填写
+# wget -O /volume1/docker/clash/config/config.yaml https://xxx
+# # external-controller地址为0.0.0.0:9090，方便UI访问（可选）
+# # sed -i 's/127.0.0.1:9090/0.0.0.0:9090/g' /volume1/docker/clash/config.yaml
+# # 增加安全性，配置使用代理的用户名和密码（可选）
+# # sed -i 's/allow-lan: true/allow-lan: true\r\nauthentication:\r\n - "user1:password1"\r\n - "user2:password2"/g' /volume1/docker/clash/config.yaml
+# # 去掉重启Docker，调用API刷新：
+# curl --location --request PUT 'http://localhost:9090/configs' \
+# --header 'Content-Type: application/json' \
+# --data-raw '{"path": "/root/.config/clash/config.yaml"}'
+version: '3'
+services:
+  clash:
+    image: dreamacro/clash
+    container_name: clash
+    volumes:
+      - /volume1/docker/clash/clash:/root/.config/clash
+    ports:
+      - "7890:7890" # Mix proxy
+      - "9090:9090" # Portal API
+    restart: unless-stopped
+  yacd:
+    image: haishanh/yacd
+    container_name: clash_yacd
+    ports:
+      - "5080:80" # Web
+    restart: unless-stopped

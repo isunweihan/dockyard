@@ -1,0 +1,31 @@
+version: "3"
+services:
+  nginx-proxy-manager:
+    container_name: nginx-proxy-manager
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    ports:
+      - '37443:443'
+      - '8181:81'
+    environment:
+      DB_MYSQL_HOST: "mariadb-aria"
+      DB_MYSQL_PORT: 3306
+      DB_MYSQL_USER: "npm"
+      DB_MYSQL_PASSWORD: "npm"
+      DB_MYSQL_NAME: "npm"
+    volumes:
+      - /volume1/docker/nginx-proxy-manager/nginx-proxy-manager/data:/data
+      - /volume1/docker/nginx-proxy-manager/nginx-proxy-manager/letsencrypt:/etc/letsencrypt
+    depends_on:
+      - mariadb-aria
+  mariadb-aria:
+    container_name: nginx-proxy-manager_mariadb-aria
+    image: jc21/mariadb-aria:latest
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: 'npm'
+      MYSQL_DATABASE: 'npm'
+      MYSQL_USER: 'npm'
+      MYSQL_PASSWORD: 'npm'
+    volumes:
+      - /volume1/docker/nginx-proxy-manager/mariadb-aria:/var/lib/mysql

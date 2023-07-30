@@ -1,0 +1,70 @@
+# https://github.com/HenryQW/Awesome-TTRSS/blob/main/docker-compose.yml
+version: "3"
+services:
+  ttrss:
+    image: wangqiru/ttrss:latest
+    container_name: ttrss
+    ports:
+      - 3181:80
+    environment:
+      - SELF_URL_PATH=${SELF_URL_PATH} # please change to your own domain
+      - DB_HOST=postgres
+      - DB_PASS=Grde5w3IlLRrOiQQ # use the same password defined in `database.postgres`
+      - PUID=1000
+      - PGID=1000
+      - ALLOW_PORTS=1200 # Port of rsshub, if not 80 or 443
+    volumes:
+      - feed-icons:/var/www/feed-icons/
+    networks:
+      - public_access
+      - service_only
+      - database_only
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+
+  mercury-parser-api: # set Mercury Parser API endpoint to `mercury-parser-api:3000` on TTRSS plugin setting page
+    image: wangqiru/mercury-parser-api:latest
+    container_name: ttrss_mercury
+    networks:
+      - public_access
+      - service_only
+    restart: unless-stopped
+
+  opencc-api-server: # set OpenCC API endpoint to `opencc-api-server:3000` on TTRSS plugin setting page
+    image: wangqiru/opencc-api-server:latest
+    container_name: ttrss_opencc
+    environment:
+      - NODE_ENV=production
+    networks:
+      - service_only
+    restart: unless-stopped
+
+  postgres:
+    image: postgres:13-alpine
+    container_name: ttrss_postgres
+    environment:
+      - POSTGRES_PASSWORD=Grde5w3IlLRrOiQQ # feel free to change the password
+    volumes:
+      - /volume1/docker/ttrss/postgres:/var/lib/postgresql/data # persist postgres data to ~/postgres/data/ on the host
+    networks:
+      - database_only
+    restart: unless-stopped
+
+  rsshub:
+    container_name: ttrss_rsshub
+    image: diygod/rsshub
+    networks: 
+      - service_only
+      - public_access
+    restart: unless-stopped
+
+volumes:
+  feed-icons:
+
+networks:
+  public_access: # Provide the access for ttrss UI
+  service_only: # Provide the communication network between services only
+    internal: true
+  database_only: # Provide the communication between ttrss and database only
+    internal: true

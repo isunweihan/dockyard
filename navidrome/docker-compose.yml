@@ -1,0 +1,11 @@
+version: "3"
+services:
+  navidrome:
+    container_name: navidrome
+    image: deluan/navidrome:latest
+    ports:
+      - "4533:4533"
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/navidrome/navidrome:/data
+      - /volume2/homes/sunweihan/music:/music/sunweihan # music folders

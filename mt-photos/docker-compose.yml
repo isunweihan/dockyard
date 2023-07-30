@@ -1,0 +1,14 @@
+version: '3'
+services:
+  mt-photos:
+    container_name: mt-photos
+    image: mtphotos/mt-photos
+    network_mode: bridge
+    volumes:
+      - /volume1/docker/mt-photos/mt-photos:/config
+      # photo folders
+    ports:
+      - "8063:8063"
+    environment:
+      - TZ=Asia/Shanghai
+    restart: unless-stopped

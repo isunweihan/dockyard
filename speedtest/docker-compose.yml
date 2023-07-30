@@ -1,0 +1,8 @@
+# https://hub.docker.com/r/adolfintel/speedtest
+version: '3'
+services:
+  speedtest:
+    image: adolfintel/speedtest
+    restart: unless-stopped
+    ports:
+      - 5580:80

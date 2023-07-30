@@ -5,7 +5,7 @@ services:
     image: justarchi/archisteamfarm
     ports:
       - "1242:1242"
-    restart: always
+    restart: unless-stopped
     volumes:
       - /volume1/docker/archisteamfarm/archisteamfarm/config:/app/config
       - /volume1/docker/archisteamfarm/archisteamfarm/plugins:/app/plugins

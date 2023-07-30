@@ -1,0 +1,18 @@
+version: "3"
+services:
+  qbittorrent:
+    container_name: qbittorrent
+    deploy:
+      resources:
+        limits:
+          memory: 2048M
+    image: superng6/qbittorrent
+    network_mode: bridge
+    ports:
+      - "8999:8080"
+      - "36881:36881/udp"
+      - "36881:36881/tcp"
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/qbittorrent/qbittorrent:/config
+      - /volume3/media:/media
