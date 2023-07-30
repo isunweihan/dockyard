@@ -3,9 +3,7 @@ services:
   ddns-go:
     container_name: ddns-go
     image: jeessy/ddns-go
-    network_mode: bridge
-    ports:
-      - "9876:9876"
+    network_mode: host
     restart: unless-stopped
     volumes:
       - /volume1/docker/ddns-go/ddns-go:/root
