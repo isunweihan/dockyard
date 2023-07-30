@@ -1,0 +1,12 @@
+# https://github.com/usememos/memos
+version: "3"
+services:
+  memos:
+    container_name: memos
+    image: ghcr.io/usememos/memos:latest
+    network_mode: bridge
+    ports:
+      - "20289:5230"
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/memos/memos:/var/opt/memos
