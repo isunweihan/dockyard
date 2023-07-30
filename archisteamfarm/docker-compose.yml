@@ -1,0 +1,11 @@
+version: "3"
+services:
+  archisteamfarm:
+    container_name: archisteamfarm
+    image: justarchi/archisteamfarm
+    ports:
+      - "1242:1242"
+    restart: always
+    volumes:
+      - /volume1/docker/archisteamfarm/archisteamfarm/config:/app/config
+      - /volume1/docker/archisteamfarm/archisteamfarm/plugins:/app/plugins
