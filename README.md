@@ -86,3 +86,9 @@ Compose path：填写仓库中 docker-compose.yml 文件的相对路径，如 ng
 5. 进阶配置，在 Stack 部署中使用环境变量：部分不能公开的数据，如各种密钥、密码等，或是与环境有关的配置，需要使用环境变量配置，如 chatgpt-next-web/docker-compose.yml 中 存在 ${...} 格式的环境变量，在新建 Stack 界面 Environment variables 部分添加对应环境变量的 name 和 value 即可。（如果 docker-compose.yml 需要环境变量，但是这里没有添加，会部署失败）
 
 6. 填写完信息点击 Deploy the stack 部署。
+
+7. docker-compose.yml 更新后进入 Stack 配置重新 Pull and redeploy 即可更新。
+
+## 4. 下一步计划
+
++ [ ] docker-compose.yml 中的 volumes 配置支持自定义地址以支持不同 NAS
