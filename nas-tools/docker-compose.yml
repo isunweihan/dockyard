@@ -1,0 +1,16 @@
+# https://github.com/NAStool/nas-tools
+version: "3"
+services:
+  nas-tools:
+    container_name: nas-tools
+    image: nastool/nas-tools
+    network_mode: bridge
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+    ports:
+      - "25177:3000"
+    restart: unless-stopped
+    volumes:
+      - /volume1/docker/nas-tools/nas-tools:/config
+      - /volume3/media:/media # media folder
