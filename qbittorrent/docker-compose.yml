@@ -8,6 +8,10 @@ services:
           memory: 2048M
     image: superng6/qbittorrent
     network_mode: bridge
+    environment:
+      PUID: ${PUID}
+      PGID: ${PGID}
+      TZ: Asia/Shanghai
     ports:
       - "8999:8080"
       - "36881:36881/udp"
