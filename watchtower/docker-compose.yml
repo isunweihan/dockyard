@@ -6,7 +6,7 @@ services:
     network_mode: bridge
     environment: 
       - TZ=Asia/Shanghai
-    command: --cleanup
+    command: --cleanup --schedule "0 0 3 * * *"
     restart: unless-stopped
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
