@@ -10,5 +10,10 @@ services:
     environment:
       WARP_SLEEP: 2
       WARP_LICENSE_KEY: ${WARP_LICENSE_KEY}
+    cap_add:
+      - NET_ADMIN
+    sysctls:
+      - net.ipv6.conf.all.disable_ipv6=0
+      - net.ipv4.conf.all.src_valid_mark=1
     volumes:
       - /volume1/docker/warp/warp:/var/lib/cloudflare-warp
