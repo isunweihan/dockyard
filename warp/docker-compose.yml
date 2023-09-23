@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  warp:
+    image: caomingjun/warp
+    container_name: warp
+    restart: unless-stopped
+    ports:
+      - '31080:1080'
+    environment:
+      WARP_SLEEP: 2
+      WARP_LICENSE_KEY: ${WARP_LICENSE_KEY}
+    volumes:
+      - /volume1/docker/warp/warp:/var/lib/cloudflare-warp
