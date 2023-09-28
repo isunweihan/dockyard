@@ -1,0 +1,14 @@
+# https://github.com/bjdgyc/anylink
+version: "3"
+services:
+  anylink:
+    container_name: anylink
+    image: bjdgyc/anylink
+    network_mode: bridge
+    ports:
+      - "30443:443"
+      - "8800:8800"
+    restart: unless-stopped
+    privileged: true
+    volumes:
+      - /volume1/docker/anylink/anylink:/app/conf
