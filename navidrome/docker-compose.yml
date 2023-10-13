@@ -8,4 +8,4 @@ services:
     restart: unless-stopped
     volumes:
       - /volume1/docker/navidrome/navidrome:/data
-      - /volume2/homes/sunweihan/music:/music/sunweihan # music folders
+      - /volume2/homes/sunweihan/Music:/music/sunweihan # music folders
