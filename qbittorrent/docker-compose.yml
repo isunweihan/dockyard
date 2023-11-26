@@ -7,16 +7,12 @@ services:
         limits:
           memory: 2048M
     image: superng6/qbittorrent
-    network_mode: bridge
+    network_mode: host
     environment:
       PUID: ${PUID}
       PGID: ${PGID}
       TZ: Asia/Shanghai
-    ports:
-      - "8999:8080"
-      - "36881:36881/udp"
-      - "36881:36881/tcp"
-    restart: unless-stopped
+      WEBUI_PORT: 8999
     volumes:
       - /volume1/docker/qbittorrent/qbittorrent:/config
       - /volume3/media:/media

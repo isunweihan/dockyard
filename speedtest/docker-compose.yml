@@ -2,6 +2,7 @@
 version: '3'
 services:
   speedtest:
+    container_name: speedtest
     image: adolfintel/speedtest
     restart: unless-stopped
     ports:
