@@ -15,4 +15,5 @@ services:
       WEBUI_PORT: 8999
     volumes:
       - /volume1/docker/qbittorrent/qbittorrent:/config
+      - /volume2/mteam:/mteam
       - /volume3/media:/media
