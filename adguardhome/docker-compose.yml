@@ -7,13 +7,10 @@ services:
   adguardhome:
     image: adguard/adguardhome
     container_name: adguardhome
-    ports:
-      - "53:53/udp"
-      - "3000:3000/tcp"
     volumes:
       - /volume1/docker/adguardhome/adguardhome/work:/opt/adguardhome/work
       - /volume1/docker/adguardhome/adguardhome/conf:/opt/adguardhome/conf
-    network_mode: bridge
+    network_mode: host
     links:
       - smartdns
     restart: unless-stopped
