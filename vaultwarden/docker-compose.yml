@@ -1,0 +1,17 @@
+# https://atpx.com/blog/docker-vaultwarden/
+
+version: '3'
+
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    ports:
+        - "35612:80"
+    volumes:
+      - /volume1/docker/vaultwarden/vaultwarden:/data
+    environment:
+      SIGNUPS_ALLOWED: "true"
+      WEBSOCKET_ENABLED: "true"
+      WEB_VAULT_ENABLED: "true"
