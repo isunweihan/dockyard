@@ -3,7 +3,7 @@ version: '3'
 
 services:
   warp:
-    image: caomingjun/warp
+    image: caomingjun/warp:2023-07-18
     container_name: warp
     restart: unless-stopped
     ports:
