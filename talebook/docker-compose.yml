@@ -1,0 +1,26 @@
+version: "2.4"
+services:
+  # main service
+  talebook:
+    container_name: talebook
+    restart: unless-stopped
+    image: talebook/talebook
+    volumes:
+      - /volume1/docker/talebook/talebook:/data
+    ports:
+      - "33717:80"
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Shanghai
+      # 调整为『SSR=ON』可开启「服务器端渲染」模式，对于搜索引擎更友好，同时更消耗服务器性能
+      - SSR=OFF
+    depends_on:
+      - douban-rs-api
+
+  # optional, for meta plugins
+  # please set "http://douban-rs-api" in settings
+  douban-rs-api:
+    container_name: douban-rs-api
+    restart: unless-stopped
+    image: ghcr.io/cxfksword/douban-api-rs
