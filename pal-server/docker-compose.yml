@@ -9,8 +9,7 @@ services:
     image: cm2network/steamcmd
     container_name: pal-server
     ports:
-      - 38211:38211
-      - 38211:38211/udp
+      - "38211:38211/udp"
     mem_limit: 16GB
     network_mode: bridge
     volumes:
