@@ -1,0 +1,11 @@
+version: '3.8'
+services:
+  pal-server:
+    image: cm2network/steamcmd
+    container_name: pal-server
+    ports:
+      - 38211:8211
+    mem_limit: 16GB
+    volumes:
+      - /volume2/docker/pal-server/pal-server:/home/steam/Steam
+    command: bash /home/steam/Steam/steamapps/common/PalServer/PalServer.sh
