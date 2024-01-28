@@ -7,5 +7,5 @@ services:
       - 38211:8211
     mem_limit: 16GB
     volumes:
-      - /volume2/docker/pal-server/pal-server:/home/steam/Steam
+      - /volume1/docker/pal-server/pal-server:/home/steam/Steam
     command: bash /home/steam/Steam/steamapps/common/PalServer/PalServer.sh
