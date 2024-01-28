@@ -8,5 +8,5 @@ services:
       - "12346-12347:12346-12347/udp"
    network_mode: bridge
    volumes:
-      - /volume2/docker/dst-server/dst-server:/data
+      - /volume1/docker/dst-server/dst-server:/data
    stop_grace_period: 6m
