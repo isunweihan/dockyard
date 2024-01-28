@@ -1,3 +1,8 @@
+# 先使用此命令启动一次容器，下载服务端文件：docker run -it -v /volume1/docker/pal-server/pal-server:/home/steam/Steam --name=steamcmd cm2network/steamcmd bash
+# 容器启动后，执行此命令下载服务端文件：/home/steam/steamcmd/steamcmd.sh +login anonymous +app_update 2394010 validate +quit
+# 下载完成后可以删除上面创建的容器，运行此文件启动服务器。
+# 参考：https://zhuanlan.zhihu.com/p/678967441
+
 version: '3.8'
 services:
   pal-server:
@@ -6,6 +11,8 @@ services:
     ports:
       - 38211:8211
     mem_limit: 16GB
+    network_mode: bridge
     volumes:
       - /volume1/docker/pal-server/pal-server:/home/steam/Steam
     command: bash /home/steam/Steam/steamapps/common/PalServer/PalServer.sh
+    restart: unless-stopped
