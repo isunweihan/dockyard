@@ -3,7 +3,7 @@ services:
   dst-server:
     container_name: dst-server
     image: jamesits/dst-server:latest
-    restart: "on-failure:5"
+    restart: unless-stopped
     ports:
        - "10999-11000:10999-11000/udp"
        - "12346-12347:12346-12347/udp"
