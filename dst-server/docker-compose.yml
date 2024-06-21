@@ -7,7 +7,7 @@ services:
     ports:
        - "10999-11000:10999-11000/udp"
        - "12346-12347:12346-12347/udp"
-    environment:
+    # environment:
       # HTTP_PROXY: ${HTTP_PROXY}
     network_mode: bridge
     volumes:
