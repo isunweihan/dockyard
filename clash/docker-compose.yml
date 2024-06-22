@@ -14,7 +14,7 @@
 version: '3'
 services:
   clash:
-    image: dreamacro/clash
+    image: rkdgtrr4.mirror.aliyuncs.com/dreamacro/clash
     container_name: clash
     volumes:
       - /volume1/docker/clash/clash:/root/.config/clash
@@ -23,7 +23,7 @@ services:
       - "9090:9090" # Portal API
     restart: unless-stopped
   yacd:
-    image: haishanh/yacd
+    image: rkdgtrr4.mirror.aliyuncs.com/haishanh/yacd
     container_name: clash_yacd
     ports:
       - "5080:80" # Web
